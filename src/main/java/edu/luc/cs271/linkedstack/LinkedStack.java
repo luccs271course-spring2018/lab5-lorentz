@@ -58,15 +58,42 @@ public class LinkedStack<E> implements IStack<E> {
 
   @Override
   public List<E> asList() {
-    // TODO implement using an ArrayList preallocated with the right size
-    // TODO add any instance variable(s) required to support this
-    Node<E> top1 = top;
-    List<E> list = new ArrayList();
-    while (top1 != null) {
-      list.add(top1.data);
-      top1 = top1.next;
+   final ArrayList<E> result = new ArrayList<>(size);
+  populateList(this.top, result); // TODO replace null with the right reference does that fix it?
+  return result;
     }
+  
 
-    return list;
-  }
+	private void populateList(final Node<E> curr, final List<E> result) {
+  	// TODO recursively populate the list in the desired order !!!maybe this works
+		if(curr == null)
+			return;
+		if(curr != null){
+			result.add(curr);
+		}
+		populateList(curr.next, result);
+	}
+
+	@Override
+	public List<E> asFifoList() {
+  	final ArrayList<E> result = new ArrayList<>(size);
+  	populateFifoList(this.top, result); // TODO replace null with the right reference 
+  	return result;
+	}
+	
+	
+	private void populateFifoList(final Node<E> curr, final List<E> result) {
+  	// TODO recursively populate the list in the desired order
+		
+		if(curr == null)
+		{
+			return;
+		}
+		if(curr != null){
+			result.add(curr, size);
+		}
+		
+		populateFifoList(curr.next, result); 
+	
+	}
 }
