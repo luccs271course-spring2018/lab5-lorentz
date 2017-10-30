@@ -68,7 +68,7 @@ public class LinkedStack<E> implements IStack<E> {
   }
 
   private void populateList(final Node<E> curr, final List<E> result) {
-    // TODO recursively populate the list in the desired order !!!maybe this works
+    // TODO recursively populate the list in the desired order 
     if (curr == null) {
       return;
     }
