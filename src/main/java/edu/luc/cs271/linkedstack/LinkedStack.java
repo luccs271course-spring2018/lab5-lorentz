@@ -73,7 +73,7 @@ public class LinkedStack<E> implements IStack<E> {
       return;
     }
     if (curr != null) {
-      result.add(0, curr.data);
+      result.add(curr.data);
     }
     populateList(curr.next, result);
   }
@@ -91,7 +91,7 @@ public class LinkedStack<E> implements IStack<E> {
       return;
     }
     if (curr != null) {
-      result.add(curr.data);
+      result.add(0, curr.data);
     }
 
     populateFifoList(curr.next, result);
